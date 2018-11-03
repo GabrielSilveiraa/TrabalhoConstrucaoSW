@@ -1,9 +1,14 @@
+package frameworkUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import framework.TableObject;
+
 import javax.swing.JComboBox;
 
 
@@ -11,29 +16,27 @@ public class MainJPanel  extends JPanel implements ActionListener {
   /**
    * Componente de label
    */
-  private JComboBox<GUObject> combobox;
+  private JComboBox<String> combobox;
   private JButton createButton;
   private JButton readButton;
   private JButton updateButton;
   private JButton deleteButton;
-
-  public MainJPanel()  {
+  private List<TableObject> tables;
+  
+  public MainJPanel(List<TableObject> tables)  {
     //Instancia um novo label e um novo botão
     createButton = new JButton("Create");
     readButton = new JButton("Read");
     updateButton = new JButton("Update");
     deleteButton = new JButton("Delete");
     combobox = new JComboBox<>();
+    this.tables = tables;
     
     //seta os limites dos componentes
     
-    Pessoa bruno = new Pessoa();
-    bruno.cpf = "11122233345";
-    bruno.nome = "Bruno Cardoso";
-    bruno.setId(1);
-    bruno.setTableName("Pessoa");
-    
-    combobox.addItem(bruno);
+    for (TableObject table : this.tables) {
+    		combobox.addItem(table.getTableName());
+    }
     
     //Adiciona componentes a este Panel
     this.add(this.combobox);
@@ -54,7 +57,15 @@ public class MainJPanel  extends JPanel implements ActionListener {
    */
   public void actionPerformed(ActionEvent e)  {
 	  //Pega o objeto selecionado no combobox
-	  GUObject selectedObject = (GUObject) combobox.getSelectedItem();
+	  String selectedTableName = (String) combobox.getSelectedItem();
+	  TableObject selectedObject = null;
+	  
+	  for (TableObject table : this.tables) {
+  		if(selectedTableName.equals(table.getTableName())) {
+  			selectedObject = table;
+  			break;
+  		}
+	  }
 	  
     //Verifica qual botão foi acionado
     if (e.getSource()==this.createButton) {

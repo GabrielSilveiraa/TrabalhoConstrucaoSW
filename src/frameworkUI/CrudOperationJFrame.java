@@ -1,17 +1,21 @@
+package frameworkUI;
+
+import framework.TableObject;
 import javax.swing.*;
 import java.awt.event.*;
 
 
-public class MainJFrame extends JFrame {
+
+public class CrudOperationJFrame extends JFrame {
 
   /**
    * Cosntrutor que isntancia um JPanel e o adiciona a este JFrame.
    */
-  public MainJFrame() {
+  public CrudOperationJFrame(CrudOperation operation, TableObject object) {
 
-    this.setTitle("CRUD dos guri");
+    this.setTitle(object.getTableName());
 
-    this.setSize(600, 200);
+    this.setSize(600, 800);
     
     //Adiciona a capacidade de fechar a janela
     addWindowListener(new WindowAdapter() {
@@ -21,10 +25,11 @@ public class MainJFrame extends JFrame {
     });
 
     //Instancia um novo JPanel
-    MainJPanel panel = new MainJPanel(); 
+    CrudOperationJPanel panel = new CrudOperationJPanel(object, operation);
+    panel.setLayout(null);
     
     //adicona o JPanel a este JFrame
-    this.getContentPane().add( panel ); 
+    this.getContentPane().add(panel); 
     
     //manda mostrar o JFrame
     this.show(); 

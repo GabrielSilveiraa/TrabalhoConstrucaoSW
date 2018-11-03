@@ -5,13 +5,10 @@ import java.sql.SQLException;
 
 public interface DatabaseConnection {
 
-	
 	public Connection createConnection();
 	public boolean createTable();
 	public boolean createObject(TableObject obj);
 	public TableObject readObject(TableObject table, int id) throws SQLException;
 	public boolean updateObject(TableObject obj, int id);
-	public boolean deleteObject(TableObject obj);
-	
-	
+	public boolean deleteObject(TableObject obj);	
 }

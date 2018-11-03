@@ -1,3 +1,5 @@
+package frameworkUI;
+import framework.TableObject;
 import java.awt.LayoutManager2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +21,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 	JButton mainButton;
 	CrudOperation operation;
 	
-	  public CrudOperationJPanel(GUObject object, CrudOperation operation)  {
+	  public CrudOperationJPanel(TableObject object, CrudOperation operation)  {
 		  this.textFields = new HashMap<>();
 		  this.mainButton = new JButton(operation.getName());
 		  this.operation = operation;
