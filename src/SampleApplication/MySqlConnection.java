@@ -21,7 +21,6 @@ public class MySqlConnection extends SqlConnection {
 	private static final String SENHA = "admin";
 	private static final String URL = "jdbc:mysql://localhost:3306/teste";
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	Connection conn = null;
 
 	@Override
 	public Connection createConnection() {

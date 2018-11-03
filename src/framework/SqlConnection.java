@@ -14,7 +14,7 @@ import framework.TableObject;
 
 public abstract class SqlConnection implements DatabaseConnection {
 
-	Connection conn = null;
+	protected Connection conn = null;
 	
 	@Override
 	public boolean createTable() {
