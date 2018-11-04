@@ -12,15 +12,16 @@ public class Main {
 	public static void main(String[] args) throws SQLException {
 		MySqlConnection teste = new MySqlConnection();
 		
-		Carro carro = new Carro("'Hyundai'", "'hb50'", 1.0, "'sei la'");
+		
 		Concessionaria concessionaria = new Concessionaria("Ribeiro Jung", "Avenida Ipiranga", "Concessionaria dos guri", 
 				9999, "25/12/1967", "Dos guri", true, false);
+		concessionaria.setId(7);
 		
+		Carro carro = new Carro("'Hyundai'", "'hb50'", 1.0, 7);
 		System.out.println(carro.motor.getClass());
 		
-		
 		carro.setId(4);
-		concessionaria.setId(7);
+		
 		
 		teste.createConnection();
 		

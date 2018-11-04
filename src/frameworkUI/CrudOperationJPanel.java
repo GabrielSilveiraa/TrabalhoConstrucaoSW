@@ -42,13 +42,18 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 		for (Map.Entry<String, Object> entry : dicObject.entrySet()) {
 			String key = entry.getKey();
 			JTextField textField = new JTextField();
-			JLabel label = new JLabel(key.substring(0, 1).toUpperCase() + key.substring(1).toLowerCase());
+			JLabel label = new JLabel(key.substring(0, 1).toUpperCase() + key.substring(1));
 						
 			label.setToolTipText(dicObject.get(key).getClass().getSimpleName());
 			
 			//Caso seja uma primary key, ira adicionar a mensagem na label
 			if(object.getPrimaryKey().contains(key))
 				label.setToolTipText(label.getToolTipText() + " - PRIMARY KEY ");
+			
+			//Caso seja uma chave estrangeira adiciona a mensagem na label
+			if(object.getForeignKey().keySet().contains(key))
+			label.setToolTipText(label.getToolTipText() + "- FOREIGN KEY: Class:" + object.getForeignKey().keySet() 
+					+ " Column: " + object.getForeignKey().values());
 			
 			textField.setBounds(250, yPosition, 100, 30);
 			label.setBounds(100, yPosition, 120, 30);
@@ -63,33 +68,33 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			yPosition = yPosition + 50;
 		}
 		
-		for (Map.Entry<String, HashMap<String, String>> entry : object.getForeignKey().entrySet()) {
-			String key = entry.getKey();
-			HashMap<String, String> value = entry.getValue();
-			
-			JTextField textField = new JTextField();
-			JLabel label = new JLabel(key.substring(0, 1).toUpperCase() + key.substring(1));
-			
-			label.setToolTipText("int");
-			
-			//Caso seja uma chave estrangeira adiciona a mensagem na label
-				label.setToolTipText(label.getToolTipText() + "- FOREIGN KEY: Class:" + value.keySet() 
-						+ " Column: " + value.values());
-			
-			
-			textField.setBounds(250, yPosition, 100, 30);
-			label.setBounds(100, yPosition, 120, 30);
-
-			this.textFields.put(key, textField);
-
-			this.add(textField);
-			this.add(label);
-			
-			if ((operation != CrudOperation.Create && operation != CrudOperation.Update) && key != "id") {
-				textField.hide();
-			}
-			yPosition = yPosition + 50;
-		}
+//		for (Map.Entry<String, HashMap<String, String>> entry : object.getForeignKey().entrySet()) {
+//			String key = entry.getKey();
+//			HashMap<String, String> value = entry.getValue();
+//			
+//			JTextField textField = new JTextField();
+//			JLabel label = new JLabel(key.substring(0, 1).toUpperCase() + key.substring(1));
+//			
+//			label.setToolTipText("int");
+//			
+//			//Caso seja uma chave estrangeira adiciona a mensagem na label
+//				label.setToolTipText(label.getToolTipText() + "- FOREIGN KEY: Class:" + value.keySet() 
+//						+ " Column: " + value.values());
+//			
+//			
+//			textField.setBounds(250, yPosition, 100, 30);
+//			label.setBounds(100, yPosition, 120, 30);
+//
+//			this.textFields.put(key, textField);
+//
+//			this.add(textField);
+//			this.add(label);
+//			
+//			if ((operation != CrudOperation.Create && operation != CrudOperation.Update) && key != "id") {
+//				textField.hide();
+//			}
+//			yPosition = yPosition + 50;
+//		}
 		
 		mainButton.setBounds(250, yPosition, 100, 30);
 		this.add(mainButton);

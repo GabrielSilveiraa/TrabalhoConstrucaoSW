@@ -9,23 +9,23 @@ import framework.TableObject;
 
 public class Carro extends TableObject {
 
-	
 	String marca;
 	String modelo;
 	Double motor;
-	String concessionaria;
+	int concessionariaId;
 	
-	
-	public Carro(String marca,String modelo,Double motor,String concessionaria)
+	public Carro(String marca,String modelo,Double motor, int concessionariaId)
 	{
 		super();
 		
 		this.marca = marca;
 		this.modelo = modelo;
 		this.motor = motor;
-		this.concessionaria = concessionaria;
+		this.concessionariaId = concessionariaId;
 		
-		relations.add(Concessionaria.class);		
+		primaryKey.add("id");
+		setforeignKey("concessionariaId","Concessionaria","id");
+//		relations.add(Concessionaria.class);		
 	}
 	
 	
@@ -34,7 +34,7 @@ public class Carro extends TableObject {
 		setId(Integer.parseInt(dict.get("id").toString()));
 		marca = dict.get("marca").toString();
 		motor =  (Double.parseDouble(dict.get("motor").toString()));
-		concessionaria = dict.get("concessionaria").toString();
+		concessionariaId = Integer.parseInt(dict.get("concessionariaId").toString());
 		modelo = dict.get("modelo").toString();
 	}
 
@@ -45,7 +45,7 @@ public class Carro extends TableObject {
 		obj.put("marca", marca);
 		obj.put("modelo", modelo);
 		obj.put("motor", motor);
-		obj.put("concessionaria", concessionaria);
+		obj.put("concessionariaId", concessionariaId);
 		return obj;
 	}
 	
@@ -80,13 +80,12 @@ public class Carro extends TableObject {
 	}
 
 
-	public String getConcessionaria() {
-		return concessionaria;
+	public int getIdConcessionaria() {
+		return concessionariaId;
 	}
 
-
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
+	public void setConcessionaria(int concessionariaId) {
+		this.concessionariaId = concessionariaId;
 	}
 
 	

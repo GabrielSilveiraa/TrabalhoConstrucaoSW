@@ -12,14 +12,11 @@ public abstract class TableObject {
 	protected ArrayList<String> primaryKey = new ArrayList<>();
 	protected HashMap<String, HashMap<String, String>> foreignKey = new HashMap<String, HashMap<String, String>>();
 	
-	
 	public abstract void setProperties(Map<String, Object> dict);
 	public abstract Map<String, Object> convertToDict();
 	
 	public TableObject()
 	{
-		primaryKey.add("id");
-		setforeignKey("idConcessionaria","Concessionaria","id"); //So para exemplo, depois eu tiro
 	}
 	
 	
