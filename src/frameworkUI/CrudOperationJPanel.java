@@ -42,6 +42,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			String key = entry.getKey();
 			JTextField textField = new JTextField();
 			JLabel label = new JLabel(key.substring(0, 1).toUpperCase() + key.substring(1).toLowerCase());
+						
 			label.setToolTipText(dicObject.get(key).getClass().getSimpleName());
 			
 			
