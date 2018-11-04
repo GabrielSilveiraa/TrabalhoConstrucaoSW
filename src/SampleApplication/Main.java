@@ -21,7 +21,7 @@ public class Main {
 		
 		tables.add(carro);
 		
-		new CrudFramework(tables);
+		new CrudFramework(tables, teste);
 		
 		//teste.createObject(carro);
 

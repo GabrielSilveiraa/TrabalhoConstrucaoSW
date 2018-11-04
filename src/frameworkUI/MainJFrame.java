@@ -1,18 +1,19 @@
 package frameworkUI;
 import javax.swing.*;
 
+import framework.SqlConnection;
 import framework.TableObject;
 
 import java.awt.event.*;
 import java.util.List;
-
+import framework.SqlConnection;
 
 public class MainJFrame extends JFrame {
 
   /**
    * Cosntrutor que isntancia um JPanel e o adiciona a este JFrame.
    */
-  public MainJFrame(List<TableObject> tables) {
+  public MainJFrame(List<TableObject> tables, SqlConnection connection) {
 
     this.setTitle("CRUD dos guri");
 
@@ -26,7 +27,7 @@ public class MainJFrame extends JFrame {
     });
 
     //Instancia um novo JPanel
-    MainJPanel panel = new MainJPanel(tables); 
+    MainJPanel panel = new MainJPanel(tables, connection); 
     
     //adicona o JPanel a este JFrame
     this.getContentPane().add( panel ); 

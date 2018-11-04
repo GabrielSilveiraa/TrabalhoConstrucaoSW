@@ -4,7 +4,7 @@ import java.util.Map;
 
 public abstract class TableObject {
 
-	private int id;
+	protected int id;
 	
 	private String tableName;
 	

@@ -7,10 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import framework.SqlConnection;
 import framework.TableObject;
 
 import javax.swing.JComboBox;
-
+import framework.SqlConnection;;
 
 public class MainJPanel  extends JPanel implements ActionListener {
   /**
@@ -22,8 +23,9 @@ public class MainJPanel  extends JPanel implements ActionListener {
   private JButton updateButton;
   private JButton deleteButton;
   private List<TableObject> tables;
+  private SqlConnection connection;
   
-  public MainJPanel(List<TableObject> tables)  {
+  public MainJPanel(List<TableObject> tables, SqlConnection connection)  {
     //Instancia um novo label e um novo botão
     createButton = new JButton("Create");
     readButton = new JButton("Read");
@@ -31,11 +33,12 @@ public class MainJPanel  extends JPanel implements ActionListener {
     deleteButton = new JButton("Delete");
     combobox = new JComboBox<>();
     this.tables = tables;
+    this.connection = connection;
     
     //seta os limites dos componentes
     
     for (TableObject table : this.tables) {
-    		combobox.addItem(table.getTableName());
+    		combobox.addItem(table.getClass().getSimpleName());
     }
     
     //Adiciona componentes a este Panel
@@ -61,7 +64,7 @@ public class MainJPanel  extends JPanel implements ActionListener {
 	  TableObject selectedObject = null;
 	  
 	  for (TableObject table : this.tables) {
-  		if(selectedTableName.equals(table.getTableName())) {
+  		if(selectedTableName.equals(table.getClass().getSimpleName())) {
   			selectedObject = table;
   			break;
   		}
@@ -69,13 +72,13 @@ public class MainJPanel  extends JPanel implements ActionListener {
 	  
     //Verifica qual botão foi acionado
     if (e.getSource()==this.createButton) {
-    		new CrudOperationJFrame(CrudOperation.Create, selectedObject);
+    		new CrudOperationJFrame(CrudOperation.Create, selectedObject, connection);
     } else if (e.getSource()==this.readButton) {
-    		new CrudOperationJFrame(CrudOperation.Read, selectedObject);
+    		new CrudOperationJFrame(CrudOperation.Read, selectedObject, connection);
     } else if (e.getSource()==this.updateButton) {
-    		new CrudOperationJFrame(CrudOperation.Update, selectedObject);
+    		new CrudOperationJFrame(CrudOperation.Update, selectedObject, connection);
     } else if (e.getSource()==this.deleteButton){
-    		new CrudOperationJFrame(CrudOperation.Delete, selectedObject);
+    		new CrudOperationJFrame(CrudOperation.Delete, selectedObject, connection);
     }
   }
 
