@@ -90,7 +90,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 				value = 0;
 			}
 			
-			//Adiciona aspas simples nas STRINGS (VARCHAR), pois o banco não aceita sem -- famosa gambeta
+			//Adiciona aspas simples nas STRINGS (VARCHAR), pois o banco nï¿½o aceita sem -- famosa gambeta
 			value = "'" + value + "'";
 			
 			
@@ -138,6 +138,10 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 		for ( Map.Entry<String, JTextField> entry : this.textFields.entrySet() ) {
 			String key = entry.getKey();
 			Object value = entry.getValue().getText();
+			
+			//Adiciona aspas simples nas STRINGS (VARCHAR), pois o banco nï¿½o aceita sem -- famosa gambeta
+			value = "'" + value + "'";
+			
 			properties.put(key, value);
 		}
 		object.setProperties(properties);
