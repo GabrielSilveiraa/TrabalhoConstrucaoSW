@@ -45,6 +45,15 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 						
 			label.setToolTipText(dicObject.get(key).getClass().getSimpleName());
 			
+			//Caso seja uma primary key, ira adicionar a mensagem na label
+			if(object.getPrimaryKey().contains(key))
+				label.setToolTipText(label.getToolTipText() + " - PRIMARY KEY ");
+			
+			//Caso seja uma chave estrangeira adiciona a mensagem na label
+			if(object.getPrimaryKey().contains(key))
+				label.setToolTipText(label.getToolTipText() + "- FOREIGN KEY: Class:" + object.getForeignKey().get(key).keySet() 
+						+ " Column: " + object.getForeignKey().get(key).values());
+			
 			
 			textField.setBounds(200, yPosition, 100, 30);
 			label.setBounds(100, yPosition, 120, 30);
@@ -91,6 +100,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 		for (Map.Entry<String, JTextField> entry : this.textFields.entrySet()) {
 			String key = entry.getKey();
 			Object value = entry.getValue().getText();
+			
 
 			//Usuario não precisa preencher o ID, se ele nao preencher o banco autoincrementa sozinho
 			if (key == "id") {

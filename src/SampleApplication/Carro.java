@@ -1,5 +1,6 @@
 package SampleApplication;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,10 +18,14 @@ public class Carro extends TableObject {
 	
 	public Carro(String marca,String modelo,Double motor,String concessionaria)
 	{
+		super();
+		
 		this.marca = marca;
 		this.modelo = modelo;
 		this.motor = motor;
 		this.concessionaria = concessionaria;
+		
+		
 	}
 	
 	

@@ -11,7 +11,7 @@ public class CrudOperationJFrame extends JFrame {
 	
   public CrudOperationJFrame(CrudOperation operation, TableObject object, SqlConnection connection) {
 
-    this.setTitle(object.getTableName());
+    this.setTitle(object.getClass().getSimpleName());
 
     this.setSize(600, 400);
     

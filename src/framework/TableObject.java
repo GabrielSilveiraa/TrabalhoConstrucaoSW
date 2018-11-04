@@ -1,15 +1,25 @@
 package framework;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class TableObject {
 
 	protected int id;
 	
-	private String tableName;
+	ArrayList<String> primaryKey = new ArrayList<String>();
+	HashMap<String, HashMap<String, String>> foreignKey = new HashMap<String, HashMap<String, String>>();
 	
 	public abstract void setProperties(Map<String, Object> dict);
 	public abstract Map<String, Object> convertToDict();
+	
+	public TableObject()
+	{
+		primaryKey.add("id");
+		setforeignKey("id","Concessionaria","id"); //So para exemplo, depois eu tiro
+	}
+	
 	
 	public int getId() {
 		return id;
@@ -18,15 +28,23 @@ public abstract class TableObject {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getTableName() {
-		return tableName;
+
+	public ArrayList<String> getPrimaryKey() {
+		return primaryKey;
 	}
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
+	public void setPrimaryKey(ArrayList<String> primaryKey) {
+		this.primaryKey = primaryKey;
 	}
-	
-	
+	public HashMap<String, HashMap<String, String>> getForeignKey() {
+		return foreignKey;
+	}
+	public void setforeignKey(String atributo, String outraClasse, String outroAtributo) {
+		
+		HashMap<String, String> aux = new HashMap<String, String>();
+		
+		aux.put(outraClasse, outroAtributo);
+		foreignKey.put(atributo, aux);		
+	}	
 	
 	
 }
