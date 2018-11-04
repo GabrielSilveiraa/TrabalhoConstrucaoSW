@@ -39,6 +39,7 @@ public class Carro extends TableObject {
 		obj.put("modelo", modelo);
 		obj.put("motor", motor);
 		obj.put("concessionaria", concessionaria);
+		obj.put("id", id);
 		return obj;
 	}
 	
