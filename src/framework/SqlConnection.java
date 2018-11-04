@@ -43,9 +43,10 @@ public abstract class SqlConnection implements DatabaseConnection {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 
-		return false;
+		return true;
 
 	}
 
@@ -118,22 +119,14 @@ public abstract class SqlConnection implements DatabaseConnection {
 		
 		Statement stmt;
 
-		ResultSet result;
-
 		try {
 			stmt = conn.createStatement();
 			stmt.execute(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 			return false;
 		}
-				
 		return true;
-
-		
-		
 	}
-
 }

@@ -29,7 +29,7 @@ public class Carro extends TableObject {
 		marca = dict.get("marca").toString();
 		motor =  (Double.parseDouble(dict.get("motor").toString().replace("'", "")));
 		concessionaria = dict.get("concessionaria").toString();
-		
+		modelo = dict.get("modelo").toString();
 	}
 
 	@Override
