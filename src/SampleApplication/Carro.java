@@ -26,9 +26,9 @@ public class Carro extends TableObject {
 	
 	@Override
 	public void setProperties(Map<String, Object> dict) {
-		setId(Integer.parseInt(dict.get("id").toString().replace("'","")));
+		setId(Integer.parseInt(dict.get("id").toString()));
 		marca = dict.get("marca").toString();
-		motor =  (Double.parseDouble(dict.get("motor").toString().replace("'", "")));
+		motor =  (Double.parseDouble(dict.get("motor").toString()));
 		concessionaria = dict.get("concessionaria").toString();
 		modelo = dict.get("modelo").toString();
 	}
