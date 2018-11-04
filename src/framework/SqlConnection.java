@@ -28,11 +28,13 @@ public abstract class SqlConnection implements DatabaseConnection {
 
 
 		String sql = "INSERT INTO " + obj.getClass().getSimpleName() + " ("
-				+ obj.convertToDict().keySet().toString().replace("[", "").replace("]", "") + ")" + "values ("
+				+ obj.convertToDict().keySet().toString().replace("[", "").replace("]", "") + ")" + " values ("
 				+ obj.convertToDict().values().toString().replace("[", "").replace("]", "") + ");";
 
 		Statement stmt;
-
+		
+		System.out.println(sql);
+		
 		try {
 
 			stmt = conn.createStatement();

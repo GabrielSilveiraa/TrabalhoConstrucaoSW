@@ -13,6 +13,10 @@ public class Main {
 		MySqlConnection teste = new MySqlConnection();
 		
 		Carro carro = new Carro("'Hyundai'", "'hb50'", 1.0, "'sei la'");
+		
+		System.out.println(carro.motor.getClass());
+		
+		
 		carro.setId(4);
 		
 		teste.createConnection();

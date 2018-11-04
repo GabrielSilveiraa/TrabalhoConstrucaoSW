@@ -85,9 +85,15 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 		for ( Map.Entry<String, JTextField> entry : this.textFields.entrySet() ) {
 			String key = entry.getKey();
 			Object value = entry.getValue().getText();
+			
 			if(key == "id") {
 				value = 0;
 			}
+			
+			//Adiciona aspas simples nas STRINGS (VARCHAR), pois o banco não aceita sem -- famosa gambeta
+			value = "'" + value + "'";
+			
+			
 			properties.put(key, value);
 		}
 		object.setProperties(properties);
