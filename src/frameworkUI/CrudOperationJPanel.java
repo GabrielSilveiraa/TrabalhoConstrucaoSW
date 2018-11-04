@@ -42,7 +42,9 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			String key = entry.getKey();
 			JTextField textField = new JTextField();
 			JLabel label = new JLabel(key.substring(0, 1).toUpperCase() + key.substring(1).toLowerCase());
-
+			label.setToolTipText(dicObject.get(key).getClass().getSimpleName());
+			
+			
 			textField.setBounds(200, yPosition, 100, 30);
 			label.setBounds(100, yPosition, 120, 30);
 
@@ -89,6 +91,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			String key = entry.getKey();
 			Object value = entry.getValue().getText();
 
+			//Usuario não precisa preencher o ID, se ele nao preencher o banco autoincrementa sozinho
 			if (key == "id") {
 				if (value == null)
 					value = 0;
