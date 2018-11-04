@@ -1,6 +1,7 @@
 package SampleApplication;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import framework.TableObject;
@@ -34,12 +35,12 @@ public class Carro extends TableObject {
 
 	@Override
 	public Map<String, Object> convertToDict() {
-		Map<String, Object> obj = new HashMap<String, Object>();
+		Map<String, Object> obj = new LinkedHashMap<String, Object>();
+		obj.put("id", id);
 		obj.put("marca", marca);
 		obj.put("modelo", modelo);
 		obj.put("motor", motor);
 		obj.put("concessionaria", concessionaria);
-		obj.put("id", id);
 		return obj;
 	}
 	

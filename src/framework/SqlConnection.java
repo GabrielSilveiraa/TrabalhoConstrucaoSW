@@ -24,7 +24,7 @@ public abstract class SqlConnection implements DatabaseConnection {
 
 
 	@Override
-	public boolean createObject(TableObject obj) {
+	public boolean createObject(TableObject obj) throws SQLException  {
 
 
 		String sql = "INSERT INTO " + obj.getClass().getSimpleName() + " ("
@@ -35,16 +35,13 @@ public abstract class SqlConnection implements DatabaseConnection {
 		
 		System.out.println(sql);
 		
-		try {
+		
+	
+		stmt = conn.createStatement();
+		stmt.execute(sql);	
 
-			stmt = conn.createStatement();
-			stmt.execute(sql);
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
+	
 
 		return true;
 
