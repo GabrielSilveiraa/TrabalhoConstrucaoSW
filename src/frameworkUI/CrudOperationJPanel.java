@@ -175,11 +175,12 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 
 			if (key == "id") {
 				id = value.toString();
-			}
+			}			
 
 			// Adiciona aspas simples nas STRINGS (VARCHAR), pois o banco n�o aceita sem
 			// -- famosa gambeta
-			value = "'" + value + "'";
+			if(object.convertToDict().get(key).getClass().getSimpleName().equals("String"))
+				value = "'" + value + "'";
 
 			properties.put(key, value);
 		}
