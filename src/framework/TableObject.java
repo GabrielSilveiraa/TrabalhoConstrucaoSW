@@ -37,9 +37,11 @@ public abstract class TableObject {
 	public void setPrimaryKey(ArrayList<String> primaryKey) {
 		this.primaryKey = primaryKey;
 	}
+	
 	public HashMap<String, HashMap<String, String>> getForeignKey() {
 		return foreignKey;
 	}
+	
 	public void setforeignKey(String atributo, String outraClasse, String outroAtributo) {
 		
 		HashMap<String, String> aux = new HashMap<String, String>();

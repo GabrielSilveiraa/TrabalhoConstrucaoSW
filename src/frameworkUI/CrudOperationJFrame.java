@@ -18,7 +18,7 @@ public class CrudOperationJFrame extends JFrame {
     //Adiciona a capacidade de fechar a janela
     addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
-        System.exit(0);
+    	  	dispose();
       }
     });
 

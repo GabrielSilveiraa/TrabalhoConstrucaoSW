@@ -23,6 +23,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 
 	Map<String, JTextField> textFields;
 	JButton mainButton;
+	JButton secondaryButton;
 	CrudOperation operation;
 	SqlConnection connection;
 	TableObject object;
@@ -67,9 +68,19 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			}
 			yPosition = yPosition + 50;
 		}
+		
 		mainButton.setBounds(200, yPosition, 100, 30);
 		this.add(mainButton);
 		this.mainButton.addActionListener(this);
+		
+		if(operation == CrudOperation.Update) {
+			secondaryButton = new JButton("Get");
+			secondaryButton.setBounds(100, yPosition, 80, 30);
+			this.add(secondaryButton);
+			this.secondaryButton.addActionListener(this);
+			this.mainButton.setEnabled(false);
+		}
+		
 	}
 
 	/**
@@ -91,6 +102,11 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 				this.delete();
 				break;
 			}
+		} else if (e.getSource() == this.secondaryButton) {
+			if (this.read()) {
+				this.mainButton.setEnabled(true);
+				this.secondaryButton.setEnabled(false);
+			}
 		}
 	}
 
@@ -102,7 +118,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			Object value = entry.getValue().getText();
 			
 
-			//Usuario não precisa preencher o ID, se ele nao preencher o banco autoincrementa sozinho
+			//Usuario nï¿½o precisa preencher o ID, se ele nao preencher o banco autoincrementa sozinho
 			if (key == "id") {
 				if (value == null)
 					value = 0;
@@ -138,7 +154,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void read() {
+	public boolean read() {
 		try {
 			String id = "";
 			for (Map.Entry<String, JTextField> entry : this.textFields.entrySet()) {
@@ -162,9 +178,12 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			}
 		} catch (NullPointerException e) {
 			showMessage("Objeto nao encontrado");
+			return false;
 		} catch (Exception e) {
 			showMessage(e.toString());
+			return false;
 		}
+		return true;
 	}
 
 	public void update() {
@@ -175,10 +194,9 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 			String key = entry.getKey();
 			Object value = entry.getValue().getText();
 
-			if (key == "id") {
-				id = value.toString();
-			}			
-
+			if (key == "id")
+				id = value.toString();		
+			
 			// Adiciona aspas simples nas STRINGS (VARCHAR), pois o banco nï¿½o aceita sem
 			// -- famosa gambeta
 			if(object.convertToDict().get(key).getClass().getSimpleName().equals("String"))
