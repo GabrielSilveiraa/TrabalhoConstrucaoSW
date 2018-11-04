@@ -19,7 +19,7 @@ public abstract class TableObject {
 	public TableObject()
 	{
 		primaryKey.add("id");
-		setforeignKey("id","Concessionaria","id"); //So para exemplo, depois eu tiro
+		setforeignKey("idConcessionaria","Concessionaria","id"); //So para exemplo, depois eu tiro
 	}
 	
 	
