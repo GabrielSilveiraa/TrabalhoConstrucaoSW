@@ -25,7 +25,7 @@ public class Carro extends TableObject {
 		this.motor = motor;
 		this.concessionaria = concessionaria;
 		
-		
+		relations.add(Concessionaria.class);		
 	}
 	
 	

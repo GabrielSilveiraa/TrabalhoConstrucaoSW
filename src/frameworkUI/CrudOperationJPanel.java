@@ -150,6 +150,8 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 					break;
 				}
 			}
+			
+			
 			TableObject readObject = connection.readObject(object, Integer.parseInt(id));
 			Map<String, Object> objectProperties = readObject.convertToDict();
 			for (Map.Entry<String, JTextField> entry : this.textFields.entrySet()) {
@@ -159,7 +161,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 				textField.show();
 			}
 		} catch (NullPointerException e) {
-			showMessage("Objeto não encontrado");
+			showMessage("Objeto nao encontrado");
 		} catch (Exception e) {
 			showMessage(e.toString());
 		}

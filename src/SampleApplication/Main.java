@@ -13,17 +13,21 @@ public class Main {
 		MySqlConnection teste = new MySqlConnection();
 		
 		Carro carro = new Carro("'Hyundai'", "'hb50'", 1.0, "'sei la'");
+		Concessionaria concessionaria = new Concessionaria("Ribeiro Jung", "Avenida Ipiranga", "Concessionaria dos guri", 
+				9999, "25/12/1967", "Dos guri", true, false);
 		
 		System.out.println(carro.motor.getClass());
 		
 		
 		carro.setId(4);
+		concessionaria.setId(7);
 		
 		teste.createConnection();
 		
 		List<TableObject> tables = new ArrayList<>();
 		
 		tables.add(carro);
+		tables.add(concessionaria);
 		
 		new CrudFramework(tables, teste);
 		
