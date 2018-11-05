@@ -147,7 +147,7 @@ public class CrudOperationJPanel extends JPanel implements ActionListener {
 
 			//Usuario n�o precisa preencher o ID, se ele nao preencher o banco autoincrementa sozinho
 			if (key == "id") {
-				if (value == null)
+				if (value.equals(""))
 					value = 0;
 			}
 
