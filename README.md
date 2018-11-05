@@ -58,23 +58,33 @@
 	```
 	
   No array "primaryKey" deve ser adicionado o atributo no qual é uma chave primaria no banco de dados, já no array "foreignKey" no qual 
-  conta com um método para facilitar a inserção do mesmo ("setforeignKey") deve ser passado o atributo na classe que é uma chave 
-  estrangeira,
-  a outra classe na qual ele aponta e por fim o atributo na outra classe. Desse módo é feito a ligação entre a coluna da sua tabela e a 
-  coluna da outra tabela.
+  conta com um método para facilitar a inserção do mesmo ("setforeignKey") deve ser passado o atributo na classe que é uma chave estrangeira, a outra classe na qual ele aponta e por fim o atributo na outra classe. Desse módo é feito a ligação entre a coluna da sua tabela e a coluna da outra tabela.
 	
-  Além disso, toda classes que representam tabelas devem contar com os métodos: 
+  Além disso, toda classes que representam tabelas devem implementar os seguintes métodos: 
 	
 	* setProperties(Map<String, Object> dict)
 	* Map<String, Object> convertToDict()
 	
-  Todas a comunicação entre as operações com o banco de dados, UI e os objetos de mapeamento é realizado atraves de dicionarios, para   
-  facilitar a manipulação de objetos.
-  Assim o "setProperties" é responsavel por transformar atributos de um dicionario para a classe em si e o "convertToDict" realiza o 
-  contrario, transforma a classe em si para dentro de um dicionario.
+  Todas a comunicação entre as operações com o banco de dados, UI e os objetos de mapeamento é realizado atraves de dicionarios, para facilitar a manipulação de objetos.
+  Assim o "setProperties" é responsavel por transformar atributos de um dicionario para a classe em si e o "convertToDict" realiza o contrario, transforma a classe em si para dentro de um dicionario.
 	
-  Atenção, a realização das operações com sucesso depende da boa implementação desses dois métodos, verifique atentamente eles e use a 
-  aplicação de exemplo como base.
+  Atenção, a realização das operações com sucesso depende da boa implementação desses dois métodos. Veja o seguinte exemplo:
+  
+  ```
+		public Carro(String marca,String modelo,Double motor, int concessionariaId)
+	{
+		super();
+		
+		this.marca = marca;
+		this.modelo = modelo;
+		this.motor = motor;
+		this.concessionariaId = concessionariaId;
+		
+		primaryKey.add("id");
+		setforeignKey("concessionariaId","Concessionaria","id");
+	}
+	
+	```
 	
 ## Relacionamento ?
 
