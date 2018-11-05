@@ -32,7 +32,7 @@
   A classe "TableObject" exige que toda tabela tenha um campo ID, isso garante que o framework trabalhe com um objeto uníco e não tenha repetições.
 		
   As colunas do banco são representadas por atributos, e as chaves primárias e extrangerias da tabela devem ser adicionados aos arrays 
-  "primaryKey" e "foreignKey", respectivamente, no construtor. Conforme é realizado na classe "Carro" da aplicação de exemplo:
+  "primaryKey" e "foreignKey", respectivamente, no construtor além disso o array "relations" serve para declarar relações N para N. Conforme é realizado na classe "Carro" da aplicação de exemplo:
 	
 	```
 		public Carro(String marca,String modelo,Double motor, int concessionariaId)
@@ -46,6 +46,7 @@
 		
 		primaryKey.add("id");
 		setforeignKey("concessionariaId","Concessionaria","id");
+		relations.add(new CarroConcessionaria(id, 0, 0));
 	}
 	
 	```
