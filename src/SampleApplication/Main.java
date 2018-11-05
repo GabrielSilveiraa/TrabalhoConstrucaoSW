@@ -32,6 +32,10 @@ public class Main {
 		
 		new CrudFramework(tables, teste);
 		
+		//teste.createIntermediaryTable(carro, concessionaria);
+		//teste.insertRelation(carro, concessionaria);
+		
+		
 		//teste.createObject(carro);
 
 		
