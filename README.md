@@ -86,9 +86,19 @@
 	
 ```
 
+## Main
+  O usuário do framework podera se basear na classe "Main" da aplicação de exemplo para visualizar como instanciar a aplicação.
+  Deve ficar claro que o usuário devera criar objetos como exemplo das classes em que ele quiser manipular e inserir as mesmas em um array que sera passado para a classe "CrudFramework", conforme aplicação de exemplo disponível.
+
 ## UI
-	
-	
+  A UI conta com um form que disponibiliza as 4 operações do CRUD, em cada uma é possivel realizar a sua respectiva função.
+  A primeira coisa a ser feita é atraves do combobox escolher em qual tabela sera feita as operações.
+  
+  O unico detalhe é a parte do "Create" onde se o objeto em questão tiver um relacionamento após a tentativa de inclusão do mesmo sera     apresentado um novo form de inclusão para adicionar os campos referentes a tabela de relacionamento.
+
+  Na parte do "Update" o usuário tera que primeiro inserir o "ID" do objeto, dar um "GET" para trazer as informações do mesmo na tela e após isso realizar as alterações que ele desejar nos campos apresentados.
+  
+  O "GET" traz o objeto a partir do ID inserido e o "delete" remove o objeto a partir do ID também.
 	
 	
 
