@@ -2,12 +2,10 @@
 
 ## Resumo
   Framework que disponibiliza as operações básicas de um CRUD em cima de um banco de dados relacional (MySQL, Oracle), 
-  atraves de uma classe abstrata onde são implementados tais operações e uma UI onde é possivel realizar tais operações.
+  através de uma classe abstrata onde são implementados tais operações e uma UI onde é possivel realizar tais operações.
 	
 ## Configuração do banco de dados
-  O usuario já deve estar com o banco relacional escolhido rodando na maquina em questão, então deve ser implementado uma classe
-  que extenda da classe "SqlConnection" e implementar o método "CreateConnection", como foi feito na classe "MySqlConnection" na
-  aplicação de exemplo.
+  O usuário já deve estar com o banco relacional escolhido rodando na máquina em questão. Então deve-se implementar uma classe que estenda a classe "SqlConnection" e implemente o método "CreateConnection", como foi feito na classe "MySqlConnection" da aplicação de exemplo.
 	
 	```
 	@Override
@@ -25,21 +23,16 @@
 	
 	```
 	
-  Isso visa disponibilizar para a classe "SqlConnection" o atributo "Conn" onde atraves dele sera realizado as outras operações com o 
-  banco de dados.
-  Obs: É importante verificar a porta em que o seu banco de dados subiu para colocar a mesma no código, por exemplo no MySql a default é   3306, mas isso fica a cargo de quem cria o banco.
+  Isso visa disponibilizar à classe "SqlConnection" o atributo "conn" que servirá para realizar as operações com o  banco de dados.
+  Obs: É importante verificar a porta em que o seu banco de dados está usando e colocar a mesma no código. Por exemplo, no MySql a default é 3306.
 		
 ## Como as tabelas são representadas
-  O Framework conta com uma classe chamada "TableObject" que serve para representar um mapeamento entra a classe no banco de dados e o 
-  código em si. 
-  Toda a classe no banco, em que o usuario queria realizar operações sobre ela, deve ter uma classe extendida de "TableObject" para     
-  representar a mesma.
-  A classe "TableObject" exige que toda tabela tenha um campo ID, isso garante que o framework trabalhe com um objeto uníco e não tenha 
-  repetições.
-	
+  O Framework conta com uma classe chamada "TableObject" que serve para representar um mapeamento entra a tabela no banco de dados com o código em si.
+  Toda tabela do banco, em que o usuário queria realizar operações sobre ela, deve ter uma classe estendida de "TableObject" para representar a mesma.
+  A classe "TableObject" exige que toda tabela tenha um campo ID, isso garante que o framework trabalhe com um objeto uníco e não tenha repetições.
 		
-  As colunas do banco são representadas por atributos, e chaves primarias e extrangerias da tabela devem ser adicionados aos arrays 
-  "primaryKey" e "foreignKey", respectivamente, no construtor. Conforme é realizado na classe "Carro" na aplicação de exemplo:
+  As colunas do banco são representadas por atributos, e as chaves primárias e extrangerias da tabela devem ser adicionados aos arrays 
+  "primaryKey" e "foreignKey", respectivamente, no construtor. Conforme é realizado na classe "Carro" da aplicação de exemplo:
 	
 	```
 		public Carro(String marca,String modelo,Double motor, int concessionariaId)
@@ -57,18 +50,18 @@
 	
 	```
 	
-  No array "primaryKey" deve ser adicionado o atributo no qual é uma chave primaria no banco de dados, já no array "foreignKey" no qual 
-  conta com um método para facilitar a inserção do mesmo ("setforeignKey") deve ser passado o atributo na classe que é uma chave estrangeira, a outra classe na qual ele aponta e por fim o atributo na outra classe. Desse módo é feito a ligação entre a coluna da sua tabela e a coluna da outra tabela.
+  No array "primaryKey" deve ser adicionado o atributo no qual é uma chave primária no banco de dados. 
+  Já para o array "foreignKey", deve-se utilizar o método "setforeignKey" para facilitar a inserção do mesmo. Deve ser passado o atributo na classe que é uma chave estrangeira, a outra classe na qual ele aponta e por fim o atributo na outra classe. Desse módo é feito a ligação entre a coluna da sua tabela e a coluna da outra tabela.
 	
   Além disso, toda classes que representam tabelas devem implementar os seguintes métodos: 
 	
 	* setProperties(Map<String, Object> dict)
 	* Map<String, Object> convertToDict()
 	
-  Todas a comunicação entre as operações com o banco de dados, UI e os objetos de mapeamento é realizado atraves de dicionarios, para facilitar a manipulação de objetos.
-  Assim o "setProperties" é responsavel por transformar atributos de um dicionario para a classe em si e o "convertToDict" realiza o contrario, transforma a classe em si para dentro de um dicionario.
+  Toda a comunicação entre as operações com o banco de dados, UI e os objetos de mapeamento é realizado através de dicionários para facilitar a manipulação de objetos.
+  Assim o "setProperties" é responsável por transformar atributos de um dicionário para a classe em si e o "convertToDict" realiza o contrário, transformando a classe em si para dentro de um dicionário.
 	
-  Atenção, a realização das operações com sucesso depende da boa implementação desses dois métodos. Veja o seguinte exemplo:
+  ATENÇÃO: a realização das operações com sucesso depende da boa implementação desses dois métodos. Veja o seguinte exemplo:
   
   ```
 	@Override
@@ -92,14 +85,9 @@
 	}
 	
 ```
-	
-## Relacionamento ?
 
+## UI
 	
-## UI ?
-	
-	
-## Testes ?
 	
 	
 	
