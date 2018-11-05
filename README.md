@@ -1,11 +1,11 @@
 # Trabalho de Construcao de Software
 
-##Resumo
+## Resumo
 
 	Framework que disponibiliza as operações básicas de um CRUD em cima de um banco de dados relacional (MySQL, Oracle), atraves de uma classe abstrata onde são implementados tais operações e 
 	uma UI onde é possivel realizar tais operações.
 	
-##Configuração do banco de dados
+## Configuração do banco de dados
 
 	O usuario já deve estar com o banco relacional escolhido rodando na maquina em questão, então deve ser implementado uma classe
 	que extenda da classe "SqlConnection" e implementar o método "CreateConnection", como foi feito na classe "MySqlConnection" na aplicação de exemplo.
@@ -23,6 +23,7 @@
 		// Retorna a conexao aberta
 		return conn;
 	}
+	
 	```
 	
 	Isso visa disponibilizar para a classe "SqlConnection" o atributo "Conn" onde atraves dele sera realizado as outras operações com o banco de dados.
@@ -52,6 +53,7 @@
 	}
 	
 	```
+	
 	No array "primaryKey" deve ser adicionado o atributo no qual é uma chave primaria no banco de dados, já no array "foreignKey" no qual conta com um método para facilitar a inserção do mesmo ("setforeignKey") deve ser passado o atributo na classe que é uma chave estrangeira,
 	a outra classe na qual ele aponta e por fim o atributo na outra classe. Desse módo é feito a ligação entre a coluna da sua tabela e a coluna da outra tabela.
 	
