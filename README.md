@@ -71,20 +71,27 @@
   Atenção, a realização das operações com sucesso depende da boa implementação desses dois métodos. Veja o seguinte exemplo:
   
   ```
-		public Carro(String marca,String modelo,Double motor, int concessionariaId)
-	{
-		super();
-		
-		this.marca = marca;
-		this.modelo = modelo;
-		this.motor = motor;
-		this.concessionariaId = concessionariaId;
-		
-		primaryKey.add("id");
-		setforeignKey("concessionariaId","Concessionaria","id");
+	@Override
+	public void setProperties(Map<String, Object> dict) {
+		setId(Integer.parseInt(dict.get("id").toString()));
+		marca = dict.get("marca").toString();
+		motor =  (Double.parseDouble(dict.get("motor").toString()));
+		concessionariaId = Integer.parseInt(dict.get("concessionariaId").toString());
+		modelo = dict.get("modelo").toString();
+	}
+
+	@Override
+	public Map<String, Object> convertToDict() {
+		Map<String, Object> obj = new LinkedHashMap<String, Object>();
+		obj.put("id", id);
+		obj.put("marca", marca);
+		obj.put("modelo", modelo);
+		obj.put("motor", motor);
+		obj.put("concessionariaId", concessionariaId);
+		return obj;
 	}
 	
-	```
+```
 	
 ## Relacionamento ?
 
