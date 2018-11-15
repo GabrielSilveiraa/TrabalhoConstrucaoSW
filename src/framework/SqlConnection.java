@@ -75,7 +75,7 @@ public abstract class SqlConnection implements DatabaseConnection {
 	@Override
 	public boolean updateObject(TableObject obj, int id) {
 
-		String sql = "UPDATE CARRO SET " + obj.convertToDict().toString().replace("{", "").replace("}", "")
+		String sql = "UPDATE " + obj.getClass().getSimpleName() + " SET " + obj.convertToDict().toString().replace("{", "").replace("}", "")
 				+ " WHERE ID = " + id + ";";
 
 		Statement stmt;
@@ -118,7 +118,7 @@ public abstract class SqlConnection implements DatabaseConnection {
 
 	public boolean createIntermediaryTable(TableObject obj, TableObject obj2) {
 		
-		//Verifica se a tabela j· existe		
+		//Verifica se a tabela j√° existe		
 		String sql1 = "SELECT * FROM Intermediary" + obj.getClass().getSimpleName() + obj2.getClass().getSimpleName();
 		Statement stmt;
 		try {
